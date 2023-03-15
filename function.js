@@ -23,10 +23,12 @@ let timer,
 const randomParagraph = () => {
     let randomNumber = Math.floor(Math.random() * sentences.length);
     show_sentence.innerHTML = "";
+    typing_ground.value='';
     sentences[randomNumber].split("").forEach((span) => {
         let spanTag = `<span>${span}</span>`;
         show_sentence.innerHTML += spanTag;
     })
+    // this line always blinking paragraphs first word.
     show_sentence.querySelectorAll("span")[0].classList.add("active")
     btn.addEventListener("click", () => {
         typing_ground.removeAttribute("disabled", true);
@@ -93,9 +95,6 @@ const resetTest = () => {
     fault.innerText = mistakes;
     score.innerText = 0;
     cpm.innerText = 0;
-    // btn.removeAttribute("disabled", true)
-
-
 }
 
 randomParagraph();
